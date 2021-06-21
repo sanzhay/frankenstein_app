@@ -1,3 +1,4 @@
+import 'package:clima/calculator_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/screens/loading_screen.dart';
 
@@ -8,7 +9,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: LoadingScreen(),
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Frankenstein'),
+            bottom: TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(
+                    Icons.calculate,
+                  ),
+                  text: 'Calculator',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.cloud,
+                  ),
+                  text: 'Clima',
+                ),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              CalculatorPage(),
+              LoadingScreen(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
